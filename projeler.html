@@ -115,6 +115,11 @@
         if (event.target == modal) closePModal();
     }
 </script>
-
+<script>
+    function toggleMenu() {
+        document.getElementById('nav-menu').classList.toggle('active');
+        document.querySelector('.hamburger').classList.toggle('toggle');
+    }
+</script>
 </body>
 </html>
