@@ -3,7 +3,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; overflow-x: hidden; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
 
-/* --- HEADER --- */
+/* --- HEADER & LOGO --- */
 header {
     position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
     align-items: center; padding: 15px 50px; background: rgba(10, 10, 10, 0.98);
@@ -19,44 +19,33 @@ nav a:hover { color: #f39c12; }
 .bize-ulasin { background: #f39c12 !important; color: white !important; padding: 10px 20px; border-radius: 50px; font-weight: 700; }
 
 /* --- HAMBURGER --- */
-.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 3500; }
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 3500; padding: 5px; }
 .bar { width: 25px; height: 3px; background-color: white; border-radius: 2px; transition: 0.4s; }
 
-/* --- ANA SAYFA --- */
+/* --- ANA SAYFA (INDEX) --- */
 .split-container { display: flex; height: 100vh; width: 100%; }
 .screen { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 50px; background-size: cover; background-position: center; position: relative; }
 .screen::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1; background: rgba(0,0,0,0.5); }
 .screen * { z-index: 2; position: relative; }
 .screen h1 { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; line-height: 1.1; }
 
-/* --- KARTLAR & GRID (RESİM SORUNUNU ÇÖZEN KISIM) --- */
+/* --- BUTONLAR --- */
+.btn { padding: 15px 35px; text-decoration: none; font-weight: 700; border-radius: 50px; text-transform: uppercase; transition: 0.4s; display: inline-block; cursor: pointer; border: none; font-size: 14px; }
+.btn-beton { background: #f39c12; color: white; }
+.btn-araba { background: #2980b9; color: white; }
+.btn:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+/* --- İLANLAR VE PROJELER (KART TASARIMI) --- */
+.page-header { padding: 150px 5% 50px; text-align: center; background: white; }
 .car-grid, .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 40px 10% 80px; }
 .car-card, .project-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s; border-top: 5px solid #2980b9; height: fit-content; }
 .project-card { border-top: 5px solid #f39c12; }
 
-/* ÖNEMLİ: Resmin tam ekran olmasını engelleyen kesin çözüm */
+/* KESİN ÇÖZÜM: RESMİ KUTUYA HAPSEDEN AYAR (PC VE MOBİL) */
 .card-img, .project-img { width: 100% !important; height: 250px !important; object-fit: cover !important; display: block; }
 
-/* --- FOOTER --- */
-footer { background: #111; color: white; text-align: center; padding: 30px 20px; border-top: 4px solid #f39c12; margin-top: auto; width: 100%; }
+.card-info, .project-info { padding: 20px; }
+.price-tag { color: #2980b9; font-weight: 800; font-size: 1.2rem; display: block; margin-top: 10px; }
 
-/* --- MOBİL AYARLAR --- */
-@media (max-width: 900px) {
-    header { padding: 15px 25px; }
-    .hamburger { display: flex !important; }
-    nav { position: fixed; right: -100%; top: 0; width: 80%; height: 100vh; background: #111; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; gap: 30px; z-index: 4000; }
-    nav.active { right: 0; }
-    nav a { font-size: 20px; margin: 0; }
-    
-    .split-container { flex-direction: column; height: auto; }
-    .screen { height: 60vh; padding: 120px 20px 40px; }
-    .screen h1 { font-size: 2.2rem; }
-    
-    .car-grid, .project-grid { grid-template-columns: 1fr; padding: 30px 5% 70px; }
-    .card-img, .project-img { height: 220px !important; }
-
-    /* Hamburger X Animasyonu */
-    .hamburger.toggle .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-    .hamburger.toggle .bar:nth-child(2) { opacity: 0; }
-    .hamburger.toggle .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-}
+/* --- MODAL --- */
+.modal { display: none; position: fixed; z-index
