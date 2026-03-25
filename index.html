@@ -10,9 +10,18 @@
 
 <header>
     <a href="index.html" id="logo">AKTİF <span>BETON & OTOMOTİV</span></a>
-    <nav>
+    
+    <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <nav id="nav-menu">
         <a href="index.html">Ana Sayfa</a>
         <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="projeler.html">Projeler</a>
+        <a href="ilanlar.html">İlanlar</a>
         <a href="iletisim.html" class="bize-ulasin">Bize Ulaşın</a>
     </nav>
 </header>
@@ -20,20 +29,26 @@
 <div class="split-container">
     <div class="screen left-side">
         <h1>Sert Zeminlerin Mimarı:<br><span style="color:#f39c12">Aktif Beton</span></h1>
-        <p>Hızlı, Kaliteli ve Garantili Çözümler.</p>
+        <p>Geleceği Sağlam Zeminler Üzerine İnşa Ediyoruz.</p>
         <a href="projeler.html" class="btn btn-beton">PROJELERİMİZ</a>
     </div>
     <div class="screen right-side">
         <h1>Güvenilir Sürüş:<br><span style="color:#3498db">Aktif Otomotiv</span></h1>
-        <p>Geniş Araç Parkurumuzda İlanları Keşfedin.</p>
+        <p>Seçkin Araç Portföyümüzü Keşfedin.</p>
         <a href="ilanlar.html" class="btn btn-araba">ARAÇ İLANLARI</a>
     </div>
 </div>
 
 <footer>
     <p>&copy; 2026 <strong>Aktif Beton & Otomotiv</strong>. Tüm Hakları Saklıdır.</p>
-    <p style="font-size: 12px; margin-top: 10px; opacity: 0.6;">Polatlı / Ankara</p>
 </footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('nav-menu').classList.toggle('active');
+        document.querySelector('.hamburger').classList.toggle('toggle');
+    }
+</script>
 
 </body>
 </html>
