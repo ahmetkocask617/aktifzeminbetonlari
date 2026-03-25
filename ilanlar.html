@@ -3,17 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlanlar - AKTİF</title>
+    <title>Araç İlanları - AKTİF</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header { padding: 150px 5% 50px; text-align: center; }
+        .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 10% 80px; }
+        
+        .car-card { 
+            background: white; border-radius: 20px; overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; 
+            cursor: pointer; border-top: 5px solid #2980b9; 
+        }
+        .car-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .car-img { width: 100%; height: 220px; object-fit: cover; background: #eee; }
+        .car-info { padding: 20px; }
+        .car-price { color: #2980b9; font-weight: 800; font-size: 1.3rem; display: block; margin-top: 15px; }
+
+        /* Modal (Detay Penceresi) */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
+        .modal-content { background: white; margin: 5% auto; padding: 40px; width: 90%; max-width: 650px; border-radius: 25px; position: relative; }
+        .close { position: absolute; right: 25px; top: 20px; font-size: 35px; cursor: pointer; color: #999; }
+    </style>
 </head>
 <body>
 
 <header>
     <a href="index.html" id="logo">AKTİF <span>BETON & OTOMOTİV</span></a>
-    <div class="hamburger" onclick="toggleMenu()">
-        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-    </div>
-    <nav id="nav-menu">
+    <nav>
         <a href="index.html">Ana Sayfa</a>
         <a href="hakkimizda.html">Hakkımızda</a>
         <a href="projeler.html">Projeler</a>
@@ -22,42 +38,57 @@
     </nav>
 </header>
 
-<div class="car-grid">
-    <div class="car-card" onclick="openModal('Mercedes C200d', '2018 | 90.000 KM', 'Hatasız boyasız tertemiz.', '1.850.000 TL', 'resimler/araba.jpg')">
-        <img src="resimler/araba.jpg" class="card-img">
-        <div style="padding:20px;"><h3>Mercedes C200d</h3><p>2018 | 90.000 KM</p><strong>1.850.000 TL</strong></div>
-    </div>
-    <div class="car-card" onclick="openModal('BMW 320i', '2015 | 145.000 KM', '40. Yıl Özel Seri.', '1.250.000 TL', 'resimler/araba.jpg')">
-        <img src="resimler/araba.jpg" class="card-img">
-        <div style="padding:20px;"><h3>BMW 320i</h3><p>2015 | 145.000 KM</p><strong>1.250.000 TL</strong></div>
-    </div>
+<div class="page-header">
+    <h1>Aktif Otomotiv Galeri</h1>
+    <p>Güvenilir ve ekspertiz garantili güncel araç stoklarımız.</p>
 </div>
 
-<div id="carModal" class="modal">
+<div class="car-grid">
+    
+    <div class="car-card" onclick="openModal('BMW 320i iED 40. Yıl', '2015', '145.000', '1.250.000 TL', 'Hatasız, boyasız, değişensiz. 40. Yıl özel seri. Tüm bakımları yetkili serviste yapılmıştır.', 'resimler/araba.jpg')">
+        <img src="resimler/araba.jpg" class="car-img">
+        <div class="car-info">
+            <h3>BMW 320i iED 40. Yıl</h3>
+            <p>2015 Model | 145.000 KM</p>
+            <span class="car-price">1.250.000 TL</span>
+        </div>
+    </div>
+
+    <div class="car-card" onclick="openModal('Mercedes C200d AMG', '2018', '92.000', '1.850.000 TL', 'Hatasız, boyasız. Cam tavanlı, imzalı seri.', 'resimler/araba.jpg')">
+        <img src="resimler/araba.jpg" class="car-img">
+        <div class="car-info">
+            <h3>Mercedes C200d AMG</h3>
+            <p>2018 Model | 92.000 KM</p>
+            <span class="car-price">1.850.000 TL</span>
+        </div>
+    </div>
+
+</div>
+
+<div id="detailsModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modalImg" src="" class="modal-img">
         <h2 id="modalTitle"></h2>
-        <p id="modalSub" style="color:#2980b9; margin:10px 0;"></p>
-        <p id="modalDesc"></p>
-        <h3 id="modalPrice" style="margin-top:20px;"></h3>
+        <p id="modalYearKm" style="color:#2980b9; font-weight: 500;"></p>
+        <hr style="opacity:0.1; margin:20px 0;">
+        <p id="modalDesc" style="line-height: 1.8; color: #555;"></p>
+        <h3 id="modalPrice" style="background: #f1f8ff; padding: 15px; border-radius: 10px; color: #2980b9; margin-top: 25px; display: inline-block;"></h3>
+        <br><br>
+        <a href="iletisim.html" class="btn btn-araba" style="display:block; text-align:center; text-decoration: none;">BİZE ULAŞIN</a>
     </div>
 </div>
 
 <script>
-    function toggleMenu() {
-        document.getElementById('nav-menu').classList.toggle('active');
-        document.querySelector('.hamburger').classList.toggle('toggle');
+    function openModal(title, year, km, price, desc, img) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalYearKm').innerText = year + " Model | " + km + " KM";
+        document.getElementById('modalDesc').innerText = desc;
+        document.getElementById('modalPrice').innerText = "Fiyat: " + price;
+        document.getElementById('detailsModal').style.display = "block";
     }
-    function openModal(t, s, d, p, img) {
-        document.getElementById('modalTitle').innerText = t;
-        document.getElementById('modalSub').innerText = s;
-        document.getElementById('modalDesc').innerText = d;
-        document.getElementById('modalPrice').innerText = "Fiyat: " + p;
-        document.getElementById('modalImg').src = img;
-        document.getElementById('carModal').style.display = "block";
-    }
-    function closeModal() { document.getElementById('carModal').style.display = "none"; }
+    function closeModal() { document.getElementById('detailsModal').style.display = "none"; }
+    window.onclick = function(e) { if (e.target == document.getElementById('detailsModal')) closeModal(); }
 </script>
+
 </body>
 </html>

@@ -1,46 +1,26 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projelerimiz - AKTİF</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .page-header { padding: 150px 5% 50px; text-align: center; }
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 10% 80px; }
-        
-        /* Proje Kartı Tasarımı */
-        .project-card { 
-            background: white; border-radius: 20px; overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; 
-            cursor: pointer; border-top: 5px solid #f39c12; 
-        }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .project-img { width: 100%; height: 220px; object-fit: cover; background: #eee; }
-        .project-info { padding: 20px; }
-        .project-info h3 { color: #333; margin-bottom: 5px; }
-
-        /* Modal (Pencere) Ayarları */
-        .modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
-        .modal-content { background: white; margin: 10% auto; padding: 40px; width: 90%; max-width: 600px; border-radius: 25px; position: relative; }
-        .close { position: absolute; right: 25px; top: 20px; font-size: 35px; cursor: pointer; color: #999; }
-        
-        @media (max-width: 900px) { .project-grid { grid-template-columns: 1fr; } .page-header { padding-top: 100px; } }
+        .page-header { padding: 150px 5% 50px; text-align: center; background: #fff; }
+        .page-header h1 { font-size: 3rem; color: #2c3e50; margin-bottom: 10px; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 50px 10%; }
+        .project-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+        .project-card:hover { transform: translateY(-10px); }
+        .project-img { width: 100%; height: 200px; background: #eee; object-fit: cover; }
+        .project-info { padding: 20px; border-top: 4px solid #f39c12; }
+        .project-info h3 { margin-bottom: 10px; color: #333; }
+        .project-info p { color: #777; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-
 <header>
     <a href="index.html" id="logo">AKTİF <span>BETON & OTOMOTİV</span></a>
-    
-    <div class="hamburger" onclick="toggleMenu()">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
-
-    <nav id="nav-menu">
+    <nav>
         <a href="index.html">Ana Sayfa</a>
         <a href="hakkimizda.html">Hakkımızda</a>
         <a href="projeler.html">Projeler</a>
@@ -51,75 +31,28 @@
 
 <div class="page-header">
     <h1>Tamamlanan Projeler</h1>
-    <p>Aktif Beton güvencesiyle hayata geçirilen bazı referanslarımız.</p>
+    <p>Aktif Beton güvencesiyle yükselen sağlam zeminler.</p>
 </div>
 
 <div class="project-grid">
-    
-    <div class="project-card" onclick="openPModal('Polatlı Fabrika Zemini', '5000 m2 Uygulama', '2023', 'Endüstriyel zemin uygulaması başarıyla tamamlanmıştır. Helikopterli şap ve yüzey sertleştirici kullanılarak yüksek dayanıklılık sağlanmıştır.', 'resimler/beton.jpg')">
+    <div class="project-card">
         <img src="resimler/beton.jpg" class="project-img">
         <div class="project-info">
-            <h3>Polatlı Fabrika Zemini</h3>
-            <p>Endüstriyel Zemin | 2023</p>
+            <h3>Endüstriyel Zemin Uygulaması</h3>
+            <p>Polatlı Organize Sanayi Bölgesi - 5000 m2 Helikopterli Şap Çalışması.</p>
         </div>
     </div>
-
-    <div class="project-card" onclick="openPModal('Şentepe Konut Projesi', 'Temel Beton Dökümü', '2024', 'Ankara Şentepe bölgesinde yer alan konut projesinin radye temel beton döküm işlemleri ekibimizce titizlikle yürütülmüştür.', 'resimler/beton.jpg')">
+    <div class="project-card">
         <img src="resimler/beton.jpg" class="project-img">
         <div class="project-info">
-            <h3>Şentepe Konut Projesi</h3>
-            <p>Temel Döküm | 2024</p>
+            <h3>Konut Temel Beton Dökümü</h3>
+            <p>Ankara Şentepe Mevkii - Radye Temel Beton Uygulaması.</p>
         </div>
-    </div>
-
-</div>
-
-<div id="projectModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closePModal()">&times;</span>
-        <h2 id="pTitle" style="color:#2c3e50;"></h2>
-        <p id="pSub" style="color:#f39c12; font-weight: 500; margin: 10px 0;"></p>
-        <hr style="opacity:0.1; margin:20px 0;">
-        <p id="pDesc" style="line-height:1.8; color:#555;"></p>
-        <br><br>
-        <a href="iletisim.html" class="btn btn-beton" style="display:block; text-align:center; text-decoration:none;">DETAYLI BİLGİ İÇİN BİZE ULAŞIN</a>
     </div>
 </div>
 
 <footer>
     <p>&copy; 2026 <strong>Aktif Beton & Otomotiv</strong>. Tüm Hakları Saklıdır.</p>
 </footer>
-
-<script>
-    // Menü Aç/Kapat Fonksiyonu
-    function toggleMenu() {
-        document.getElementById('nav-menu').classList.toggle('active');
-        document.querySelector('.hamburger').classList.toggle('toggle');
-    }
-
-    // Modal Aç/Kapat Fonksiyonları
-    function openPModal(title, sub, date, desc) {
-        document.getElementById('pTitle').innerText = title;
-        document.getElementById('pSub').innerText = sub + " | " + date;
-        document.getElementById('pDesc').innerText = desc;
-        document.getElementById('projectModal').style.display = "block";
-    }
-
-    function closePModal() {
-        document.getElementById('projectModal').style.display = "none";
-    }
-
-    // Dışarı tıklayınca kapatma
-    window.onclick = function(event) {
-        const modal = document.getElementById('projectModal');
-        if (event.target == modal) closePModal();
-    }
-</script>
-<script>
-    function toggleMenu() {
-        document.getElementById('nav-menu').classList.toggle('active');
-        document.querySelector('.hamburger').classList.toggle('toggle');
-    }
-</script>
 </body>
 </html>
