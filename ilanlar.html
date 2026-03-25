@@ -7,14 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
     <a href="index.html" id="logo">AKTİF <span>BETON & OTOMOTİV</span></a>
-    
     <div class="hamburger" onclick="toggleMenu()">
         <div class="bar"></div><div class="bar"></div><div class="bar"></div>
     </div>
-
     <nav id="nav-menu">
         <a href="index.html">Ana Sayfa</a>
         <a href="hakkimizda.html">Hakkımızda</a>
@@ -23,88 +20,69 @@
         <a href="iletisim.html" class="bize-ulasin">Bize Ulaşın</a>
     </nav>
 </header>
-
-<div class="page-header">
-    <h1>Aktif Otomotiv Galeri</h1>
-    <p>Detayları ve resimleri görmek için aracın üzerine tıklayın.</p>
-</div>
-
-<div class="car-grid">
-    
-    <div class="car-card" onclick="openModal('Mercedes-Benz AMG C43', '2019', '65.000 KM', '2.150.000 TL', 'Hatasız, boyasız, değişensiz. Cam tavanlı, imzalı özel seri. Lastikleri yeni takılmıştır. Tüm bakımları yetkili serviste yapılmıştır.', 'resimler/araba.jpg')">
-        <img src="resimler/araba.jpg" class="card-img" onerror="this.src='resimler/araba.jpg'">
-        <div class="card-info">
-            <h3>Mercedes-Benz AMG C43</h3>
-            <p>2019 Model | 65.000 KM</p>
-            <span class="price-tag">2.150.000 TL</span>
+<main>
+    <div class="page-header">
+        <h1>Aktif Otomotiv Galeri</h1>
+        <p>Detayları ve resimleri görmek için aracın üzerine tıklayın.</p>
+    </div>
+    <div class="car-grid">
+        <div class="car-card" onclick="openModal('Mercedes-Benz AMG C43', '2019 Model', '65.000 KM', '2.150.000 TL', 'Hatasız, boyasız, değişensiz. Cam tavanlı, imzalı özel seri. Lastikleri yeni takılmıştır.', 'resimler/araba.jpg')">
+            <img src="resimler/araba.jpg" class="card-img" onerror="this.src='resimler/araba.jpg'">
+            <div class="card-info">
+                <h3>Mercedes-Benz AMG C43</h3>
+                <p>2019 Model | 65.000 KM</p>
+                <span class="price-tag">2.150.000 TL</span>
+            </div>
+        </div>
+        <div class="car-card" onclick="openModal('BMW 320i iED 40. Yıl', '2015 Model', '145.000 KM', '1.250.000 TL', 'Sadece sağ arka çamurluk lokal boyalı. Taba deri döşeme, hayalet ekran mevcuttur.', 'resimler/araba.jpg')">
+            <img src="resimler/araba.jpg" class="card-img" onerror="this.src='resimler/araba.jpg'">
+            <div class="card-info">
+                <h3>BMW 320i iED 40. Yıl</h3>
+                <p>2015 Model | 145.000 KM</p>
+                <span class="price-tag">1.250.000 TL</span>
+            </div>
         </div>
     </div>
-
-    <div class="car-card" onclick="openModal('BMW 320i iED 40. Yıl', '2015', '145.000 KM', '1.250.000 TL', 'Sadece sağ arka çamurluk lokal boyalı. 40. Yıl özel seri. Taba deri döşeme, hayalet ekran mevcuttur.', 'resimler/araba.jpg')">
-        <img src="resimler/araba.jpg" class="card-img" onerror="this.src='resimler/araba.jpg'">
-        <div class="card-info">
-            <h3>BMW 320i iED 40. Yıl</h3>
-            <p>2015 Model | 145.000 KM</p>
-            <span class="price-tag">1.250.000 TL</span>
-        </div>
-    </div>
-
-</div>
-
+</main>
 <footer>
     <p>&copy; 2026 <strong>Aktif Beton & Otomotiv</strong>. Tüm Hakları Saklıdır.</p>
 </footer>
-
 <div id="detailsModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        
         <img id="modalImg" src="" class="modal-img">
-        
         <h2 id="modalTitle"></h2>
-        <p id="modalYearKm"></p>
+        <p id="modalYearKm" style="color:#2980b9; font-weight:bold;"></p>
         <hr style="opacity: 0.1; margin: 15px 0;">
-        <p id="modalDesc"></p>
-        <h3 id="modalPrice"></h3>
+        <p id="modalDesc" style="line-height:1.6; color:#555;"></p>
+        <h3 id="modalPrice" style="margin-top:20px; color:#333; background:#f1f8ff; padding:10px; border-radius:8px; display:inline-block;"></h3>
         <br><br>
         <a href="iletisim.html" class="btn btn-araba" style="display:block; text-align:center; text-decoration: none;">DETAYLI BİLGİ İÇİN BİZE ULAŞIN</a>
     </div>
 </div>
-
 <script>
-    // Hamburger Menüyü Açıp Kapatır (Artık her sayfada çalışır)
     function toggleMenu() {
         document.getElementById('nav-menu').classList.toggle('active');
         document.querySelector('.hamburger').classList.toggle('toggle');
     }
-
-    // Tıklayınca Açılan Modal (Resim dahil)
     function openModal(title, year, km, price, desc, img) {
         document.getElementById('modalTitle').innerText = title;
         document.getElementById('modalYearKm').innerText = year + " | " + km;
         document.getElementById('modalDesc').innerText = desc;
         document.getElementById('modalPrice').innerText = "Fiyat: " + price;
-        
-        // RESMİ GÜNCELLE
         const mImg = document.getElementById('modalImg');
         mImg.src = img;
-        mImg.onerror = function() { this.src = 'resimler/araba.jpg'; }; // Hata varsa varsayılan resim
-        
+        mImg.onerror = function() { this.src = 'resimler/araba.jpg'; };
         document.getElementById('detailsModal').style.display = "block";
         document.body.style.overflow = "hidden"; // Arka plan kaymayı engelle
     }
-
-    // Modal Kapatma
     function closeModal() {
         document.getElementById('detailsModal').style.display = "none";
         document.body.style.overflow = "auto";
     }
-
-    // Dışarı tıklayınca kapatma
     window.onclick = function(event) {
         if (event.target == document.getElementById('detailsModal')) closeModal();
     }
 </script>
-
 </body>
 </html>
