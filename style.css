@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; overflow-x: hidden; color: #333; }
+body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; overflow-x: hidden; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
 
-/* --- HEADER --- */
+/* --- HEADER & LOGO --- */
 header {
     position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
-    align-items: center; padding: 15px 50px; background: rgba(10, 10, 10, 0.95);
+    align-items: center; padding: 15px 50px; background: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(10px); z-index: 2500; border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 #logo { color: #f39c12; font-weight: 800; font-size: 24px; text-decoration: none; text-transform: uppercase; line-height: 1; }
@@ -18,36 +18,40 @@ nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 14px;
 nav a:hover { color: #f39c12; }
 .bize-ulasin { background: #f39c12 !important; color: white !important; padding: 10px 20px; border-radius: 50px; font-weight: 700; }
 
-/* --- HAMBURGER --- */
+/* --- HAMBURGER (Tüm sayfalarda görünmesi için) --- */
 .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 3000; }
 .bar { width: 25px; height: 3px; background-color: white; transition: 0.4s; }
 
-/* --- ANA SAYFA --- */
-.split-container { display: flex; height: 100vh; width: 100%; }
+/* --- SAYFA İÇERİĞİ --- */
+main { flex: 1; margin-top: 70px; } /* Header'ın altında kalmasın */
+
+.split-container { display: flex; height: calc(100vh - 70px); width: 100%; }
 .screen { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 50px; background-size: cover; background-position: center; position: relative; }
 .screen::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1; background: rgba(0,0,0,0.5); }
 .screen * { z-index: 2; }
 .screen h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 800; line-height: 1.1; }
-.btn { padding: 15px 35px; text-decoration: none; font-weight: 700; border-radius: 50px; text-transform: uppercase; transition: 0.4s; display: inline-block; cursor: pointer; border: none; }
-.btn-beton { background: #f39c12; color: white; }
-.btn-araba { background: #2980b9; color: white; }
 
-/* --- MOBİL AYARLAR (GÖRSELDEKİ HATAYI ÇÖZEN KISIM) --- */
+/* --- İLANLAR GRID (Resim boyutunu burada sınırlıyoruz) --- */
+.car-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; padding: 50px 10%; }
+.car-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); cursor: pointer; border-top: 5px solid #2980b9; height: fit-content; }
+.card-img { width: 100%; height: 250px; object-fit: cover; display: block; } /* Tam ekran olmasını bu engeller */
+
+/* --- FOOTER (Tüm sayfalarda en altta) --- */
+footer { background: #111; color: white; text-align: center; padding: 30px 20px; border-top: 4px solid #f39c12; }
+
+/* --- MOBİL AYARLAR --- */
 @media (max-width: 900px) {
-    header { padding: 15px 20px; }
-    .hamburger { display: flex; } /* Çizgiler artık görünecek */
+    header { padding: 15px 25px; }
+    .hamburger { display: flex; }
+    nav { position: fixed; right: -100%; top: 0; width: 80%; height: 100vh; background: #111; flex-direction: column; justify-content: center; transition: 0.5s; gap: 30px; }
+    nav.active { right: 0; }
+    nav a { font-size: 20px; margin: 0; }
     
-    nav { 
-        position: fixed; right: -100%; top: 0; width: 80%; height: 100vh; 
-        background: #111; flex-direction: column; justify-content: center; 
-        transition: 0.5s; gap: 30px; 
-    }
-    nav.active { right: 0; } /* Tıklayınca açılacak */
-    nav a { font-size: 18px; margin: 0; }
-
     .split-container { flex-direction: column; height: auto; }
-    .screen { height: 60vh; padding: 100px 20px 40px; }
+    .screen { height: 60vh; padding: 40px 20px; }
     .screen h1 { font-size: 2rem; }
+    .car-grid { grid-template-columns: 1fr; padding: 30px 5%; }
+    .card-img { height: 200px; }
     
     .hamburger.toggle .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
     .hamburger.toggle .bar:nth-child(2) { opacity: 0; }
