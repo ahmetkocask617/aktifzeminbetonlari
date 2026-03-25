@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projelerimiz - AKTİF</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header { padding: 150px 5% 50px; text-align: center; background: #fff; }
+        .page-header h1 { font-size: 3rem; color: #2c3e50; margin-bottom: 10px; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 50px 10%; }
+        .project-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+        .project-card:hover { transform: translateY(-10px); }
+        .project-img { width: 100%; height: 200px; background: #eee; object-fit: cover; }
+        .project-info { padding: 20px; border-top: 4px solid #f39c12; }
+        .project-info h3 { margin-bottom: 10px; color: #333; }
+        .project-info p { color: #777; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+<header>
+    <a href="index.html" id="logo">AKTİF <span>BETON & OTOMOTİV</span></a>
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="projeler.html">Projeler</a>
+        <a href="ilanlar.html">İlanlar</a>
+        <a href="iletisim.html" class="bize-ulasin">Bize Ulaşın</a>
+    </nav>
+</header>
+
+<div class="page-header">
+    <h1>Tamamlanan Projeler</h1>
+    <p>Aktif Beton güvencesiyle yükselen sağlam zeminler.</p>
+</div>
+
+<div class="project-grid">
+    <div class="project-card">
+        <img src="resimler/beton.jpg" class="project-img">
+        <div class="project-info">
+            <h3>Endüstriyel Zemin Uygulaması</h3>
+            <p>Polatlı Organize Sanayi Bölgesi - 5000 m2 Helikopterli Şap Çalışması.</p>
+        </div>
+    </div>
+    <div class="project-card">
+        <img src="resimler/beton.jpg" class="project-img">
+        <div class="project-info">
+            <h3>Konut Temel Beton Dökümü</h3>
+            <p>Ankara Şentepe Mevkii - Radye Temel Beton Uygulaması.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 <strong>Aktif Beton & Otomotiv</strong>. Tüm Hakları Saklıdır.</p>
+</footer>
+</body>
+</html>

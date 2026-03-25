@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Kaydırma sorununu çözen kritik ayar */
+html, body { 
+    height: auto; 
+    min-height: 100%; 
+    font-family: 'Poppins', sans-serif; 
+    background-color: #f8f9fa; 
+    overflow-x: hidden; 
+}
+
+/* Menü */
+header {
+    position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
+    align-items: center; padding: 15px 50px; background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+#logo { color: #f39c12; font-weight: 800; font-size: 24px; text-decoration: none; text-transform: uppercase; }
+#logo span { color: #fff; font-weight: 300; font-size: 14px; margin-left: 5px; }
+nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 14px; transition: 0.3s; }
+nav a:hover { color: #f39c12; }
+.bize-ulasin { background: #f39c12; color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700; }
+
+/* Ana Sayfa Görsel Alanı */
+.split-container { 
+    display: flex; 
+    height: 100vh; /* Ekranı kapla */
+    width: 100%; 
+}
+.screen {
+    flex: 1; display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; color: white; padding: 50px;
+    background-size: cover; background-position: center; position: relative;
+}
+.screen::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); z-index: 1; }
+.left-side { background-image: url('resimler/beton.jpg'); border-right: 1px solid rgba(255,255,255,0.2); }
+.right-side { background-image: url('resimler/araba.jpg'); }
+.right-side::before { background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 70%); }
+
+.screen * { z-index: 2; }
+.screen h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 800; line-height: 1.2; }
+.btn { padding: 15px 35px; text-decoration: none; font-weight: 700; border-radius: 50px; text-transform: uppercase; transition: 0.4s; display: inline-block; margin-top: 10px; }
+.btn-beton { background: #f39c12; color: white; }
+.btn-araba { background: #2980b9; color: white; }
+
+/* Footer */
+footer { 
+    background: #111; color: white; text-align: center; padding: 60px 20px; 
+    border-top: 5px solid #f39c12; position: relative; z-index: 10;
+}
+
+/* İletişim Sayfası Tasarımı */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 150px 10% 100px; max-width: 1200px; margin: 0 auto; }
+.contact-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+input, textarea { width: 100%; padding: 14px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
