@@ -7,44 +7,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
     <a href="index.html" id="logo">AKTİF <span>BETON & OTOMOTİV</span></a>
-    <nav>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    <nav id="nav-menu">
         <a href="index.html">Ana Sayfa</a>
         <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="projeler.html">Projeler</a>
+        <a href="ilanlar.html">İlanlar</a>
         <a href="iletisim.html" class="bize-ulasin">Bize Ulaşın</a>
     </nav>
 </header>
 
-<div class="contact-grid">
-    <div class="contact-info">
-        <h2 style="font-size: 2.5rem; color: #2c3e50; margin-bottom: 20px;">İletişime Geçin</h2>
-        <p style="margin-bottom: 30px; font-size: 1.1rem;">Tüm soru ve talepleriniz için ekibimizle irtibata geçebilirsiniz.</p>
-        
-        <p><strong>📍 Adres:</strong><br> Şentepe Mahallesi mevlana caddesi duc blokları, b blok 84/4, 06900 Polatlı Ankara Türkiye</p><br>
-        
-        <p><strong>📞 Telefonlar:</strong><br> 
-            <a href="tel:+905342083691" style="color:inherit; text-decoration:none;">+90 534 208 36 91</a><br>
-            <a href="tel:+905342922626" style="color:inherit; text-decoration:none;">+90 534 292 26 26</a>
-        </p><br>
-        
-        <p><strong>✉️ E-posta:</strong><br> info@aktifzeminbetonlari.com</p>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:50px; padding:180px 10%;" class="contact-grid">
+    <div>
+        <h2>Bize Ulaşın</h2><br>
+        <p>📍 Polatlı, Ankara</p><br>
+        <p>📞 +90 534 208 36 91</p>
     </div>
-
-    <div class="contact-card">
-        <form>
-            <input type="text" placeholder="Adınız Soyadınız" required>
-            <input type="email" placeholder="E-posta Adresiniz" required>
-            <textarea rows="5" placeholder="Mesajınız..." required></textarea>
-            <button type="submit" class="btn btn-beton" style="border:none; cursor:pointer; width:100%; display:block;">MESAJI GÖNDER</button>
-        </form>
+    <div style="background:white; padding:30px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+        <input type="text" placeholder="Adınız" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ddd; border-radius:5px;">
+        <textarea placeholder="Mesajınız" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; height:100px;"></textarea>
+        <button style="width:100%; padding:15px; background:#f39c12; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">GÖNDER</button>
     </div>
 </div>
 
-<footer>
-    <p>&copy; 2026 <strong>Aktif Beton & Otomotiv</strong>. Tüm Hakları Saklıdır.</p>
-</footer>
-
+<script>
+    function toggleMenu() {
+        document.getElementById('nav-menu').classList.toggle('active');
+        document.querySelector('.hamburger').classList.toggle('toggle');
+    }
+</script>
 </body>
 </html>
