@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim - AKTİF</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-container { padding: 150px 10% 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto; }
+        .info-box h2 { font-size: 2.5rem; margin-bottom: 20px; color: #2c3e50; }
+        .contact-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        input, textarea { width: 100%; padding: 15px; border: 1px solid #eee; border-radius: 10px; background: #fdfdfd; font-family: inherit; }
+        @media (max-width: 900px) { .contact-container { grid-template-columns: 1fr; padding-top: 120px; } }
+    </style>
 </head>
 <body>
 <header>
@@ -20,20 +28,20 @@
         <a href="iletisim.html" class="bize-ulasin">Bize Ulaşın</a>
     </nav>
 </header>
-
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:50px; padding:180px 10%;" class="contact-grid">
-    <div>
-        <h2>Bize Ulaşın</h2><br>
-        <p>📍 Polatlı, Ankara</p><br>
-        <p>📞 +90 534 208 36 91</p>
+<div class="contact-container">
+    <div class="info-box">
+        <h2>Bize Ulaşın</h2>
+        <p>Proje talepleriniz ve araç detayları için uzman ekibimizle iletişime geçin.</p><br>
+        <p><strong>📍 Adres:</strong> Polatlı, Ankara</p><br>
+        <p><strong>📞 Telefon:</strong> +90 534 208 36 91</p>
     </div>
-    <div style="background:white; padding:30px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
-        <input type="text" placeholder="Adınız" style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ddd; border-radius:5px;">
-        <textarea placeholder="Mesajınız" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; height:100px;"></textarea>
-        <button style="width:100%; padding:15px; background:#f39c12; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">GÖNDER</button>
+    <div class="contact-card">
+        <div class="form-group"><input type="text" placeholder="Adınız Soyadınız"></div>
+        <div class="form-group"><input type="email" placeholder="E-posta Adresiniz"></div>
+        <div class="form-group"><textarea rows="5" placeholder="Mesajınız"></textarea></div>
+        <button class="btn btn-beton" style="width:100%; border:none;">GÖNDER</button>
     </div>
 </div>
-
 <script>
     function toggleMenu() {
         document.getElementById('nav-menu').classList.toggle('active');
