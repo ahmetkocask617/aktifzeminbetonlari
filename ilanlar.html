@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlanlar - AKTİF</title>
@@ -9,20 +8,13 @@
     <style>
         .page-header { padding: 150px 5% 50px; text-align: center; }
         .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 10% 80px; }
-        .car-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; border-top: 5px solid #2980b9; }
-        .car-card:hover { transform: translateY(-10px); }
-        .car-img { width: 100%; height: 220px; object-fit: cover; background: #eee; }
-        .car-info { padding: 20px; }
-
+        .car-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); cursor: pointer; border-top: 5px solid #2980b9; }
         .modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
         .modal-content { background: white; margin: 10% auto; padding: 30px; width: 90%; max-width: 600px; border-radius: 20px; position: relative; }
         .close { position: absolute; right: 20px; top: 15px; font-size: 35px; cursor: pointer; }
-        
-        @media (max-width: 900px) { .car-grid { grid-template-columns: 1fr; } .page-header { padding-top: 100px; } }
     </style>
 </head>
 <body>
-
 <header>
     <a href="index.html" id="logo">AKTİF <span>BETON & OTOMOTİV</span></a>
     <div class="hamburger" onclick="toggleMenu()">
@@ -37,53 +29,34 @@
     </nav>
 </header>
 
-<div class="page-header">
-    <h1>Güncel İlanlar</h1>
-    <p>İncelemek istediğiniz aracın üzerine tıklayın.</p>
-</div>
+<div class="page-header"><h1>Araç Portföyümüz</h1><p>İncelemek için aracın üzerine tıklayın.</p></div>
 
 <div class="car-grid">
-    <div class="car-card" onclick="openModal('Örnek Araç Başlığı', '2022', '15.000 KM', '1.500.000 TL', 'Araç hakkında detaylı bilgi buraya gelecek.')">
-        <img src="resimler/araba.jpg" class="car-img">
-        <div class="car-info">
-            <h3>Örnek Araç Başlığı</h3>
-            <p>2022 | 15.000 KM</p>
-            <strong style="color:#2980b9; display:block; margin-top:10px;">1.500.000 TL</strong>
-        </div>
+    <div class="car-card" onclick="openModal('BMW 320i iED', '2015', '145.000 KM', '1.250.000 TL', 'Hatasız boyasız tertemiz araç.')">
+        <img src="resimler/araba.jpg" style="width:100%; height:200px; object-fit:cover;">
+        <div style="padding:20px;"><h3>BMW 320i iED</h3><p>2015 | 145.000 KM</p><strong style="color:#2980b9;">1.250.000 TL</strong></div>
     </div>
 </div>
 
 <div id="detailsModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="mTitle"></h2>
-        <p id="mSub" style="color:#2980b9; margin: 10px 0;"></p>
-        <p id="mDesc" style="line-height:1.6; color:#555;"></p>
-        <h3 id="mPrice" style="margin-top:20px; color:#333;"></h3>
-        <br>
-        <a href="iletisim.html" class="btn btn-araba" style="display:block; text-align:center; text-decoration:none;">BİZE ULAŞIN</a>
-    </div>
+    <div class="modal-content"><span class="close" onclick="closeModal()">&times;</span><h2 id="mTitle"></h2><p id="mSub" style="color:#2980b9; margin: 10px 0;"></p><p id="mDesc"></p><h3 id="mPrice" style="margin-top:20px;"></h3></div>
 </div>
+
+<footer><p>&copy; 2026 <strong>Aktif Beton & Otomotiv</strong>. Tüm Hakları Saklıdır.</p></footer>
 
 <script>
     function toggleMenu() {
         document.getElementById('nav-menu').classList.toggle('active');
         document.querySelector('.hamburger').classList.toggle('toggle');
     }
-    function openModal(t, s, k, p, d) {
+    function openModal(t, y, k, p, d) {
         document.getElementById('mTitle').innerText = t;
-        document.getElementById('mSub').innerText = s + " | " + k;
-        document.getElementById('mDesc').innerText = d;
+        document.getElementById('mSub').innerText = y + " | " + k;
         document.getElementById('mPrice').innerText = "Fiyat: " + p;
+        document.getElementById('mDesc').innerText = d;
         document.getElementById('detailsModal').style.display = "block";
     }
     function closeModal() { document.getElementById('detailsModal').style.display = "none"; }
-</script>
-    <script>
-    function toggleMenu() {
-        document.getElementById('nav-menu').classList.toggle('active');
-        document.querySelector('.hamburger').classList.toggle('toggle');
-    }
 </script>
 </body>
 </html>
